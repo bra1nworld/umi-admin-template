@@ -1,0 +1,93 @@
+{
+  "private": true,
+  "scripts": {
+    "commit": "git-cz",
+    "dev": " cross-env umi dev",
+    "start:prod": " cross-env UMI_ENV=prod umi dev",
+    "start:staging": " cross-env UMI_ENV=stag umi dev",
+    "build": " cross-env UMI_ENV=prod umi build",
+    "build:staging": " cross-env UMI_ENV=stag umi build",
+    "build-analyze": "ANALYZE=1 umi build",
+    "postinstall": "umi generate tmp",
+    "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
+    "test": "umi-test",
+    "test:coverage": "umi-test --coverage",
+    "jest": "jest  --coverage",
+    "lint": "eslint --cache --fix --ext .js,.jsx,.ts,.tsx src && prettier --write ."
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,css,less,scss}": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "prettier --parser=typescript --write"
+    ],
+    "src/**/*.{js,ts,tsx}": [
+      "eslint --cache --fix"
+    ]
+  },
+  "dependencies": {
+    "@ant-design/pro-layout": "^6.30.1",
+    "@babel/preset-react": "^7.16.0",
+    "@umijs/preset-react": "1.x",
+    "antd-mobile": "^5.0.0-beta.27",
+    "axios": "^0.19.2",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
+    "cross-env": "^7.0.3",
+    "lodash": "^4.17.21",
+    "umi": "^3.5.20"
+  },
+  "devDependencies": {
+    "@babel/core": "7.13.15",
+    "@babel/preset-env": "7.13.15",
+    "@babel/preset-typescript": "^7.13.0",
+    "@commitlint/config-conventional": "^12.1.1",
+    "@types/antd": "^1.0.0",
+    "@types/jest": "^26.0.23",
+    "@types/lodash": "^4.14.168",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "@umijs/fabric": "^2.0.8",
+    "@umijs/test": "^3.3.9",
+    "babel-jest": "^26.6.3",
+    "commitlint": "^12.1.1",
+    "eslint": "^7.24.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.23.2",
+    "git-cz": "^4.7.6",
+    "husky": "^4.3.8",
+    "jest": "^26.6.3",
+    "lint-staged": "^10.0.7",
+    "mockjs": "^1.1.0",
+    "object-assign": "^4.1.1",
+    "prettier": "^2.2.0",
+    "react": "17.x",
+    "react-dom": "17.x",
+    "typescript": "^4.1.2"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "ts",
+      "tsx"
+    ],
+    "moduleNameMapper": {
+      "^@/(.*)": "<rootDir>/src/$1"
+    }
+  }
+}
